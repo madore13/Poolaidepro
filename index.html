@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PoolAide Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;background:#eaf6ff;margin:0}
+header{background:#003366;color:white;padding:15px;text-align:center}
+section{padding:15px}
+input,select{width:100%;padding:8px;margin:5px 0}
+button{background:#003366;color:white;border:none;padding:10px;margin-top:5px}
+li{background:white;margin:5px;padding:10px;border-radius:6px}
+</style>
+</head>
+
+<body>
+
+<header>PoolAide Pro</header>
+
+<section>
+
+<h3>Ajouter client</h3>
+
+<input id="nom" placeholder="Nom client">
+<input id="adresse" placeholder="Adresse">
+<select id="service">
+<option>Ouverture</option>
+<option>Entretien</option>
+<option>Fermeture</option>
+</select>
+
+<input id="prix" placeholder="Prix">
+
+<button onclick="addClient()">Ajouter</button>
+
+</section>
+
+<section>
+
+<h3>Liste des clients</h3>
+
+<ul id="list"></ul>
+
+</section>
+
+<script>
+
+let clients=[]
+
+function addClient(){
+
+let nom=document.getElementById("nom").value
+let adresse=document.getElementById("adresse").value
+let service=document.getElementById("service").value
+let prix=document.getElementById("prix").value
+
+clients.push({nom,adresse,service,prix})
+
+render()
+
+}
+
+function render(){
+
+let list=document.getElementById("list")
+list.innerHTML=""
+
+clients.forEach(c=>{
+
+let li=document.createElement("li")
+
+li.innerHTML=
+c.nom+"<br>"+
+c.adresse+"<br>"+
+c.service+" - "+c.prix+"$"
+
+list.appendChild(li)
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
